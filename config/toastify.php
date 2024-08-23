@@ -27,35 +27,46 @@ return [
     */
 
     'toastifiers' => [
+        'duration' => 5000,
         'toast' => [
             'style' => [
-                'color' => '#fff',
-                'background' => '#182433',
                 'font-size' => '14px',
+                'display' => 'flex',
+                'align-items' => 'center',
+                'background-color'=> '#fff',
+                'border-radius' => '2px',
+                'padding' => '20px 0',
+                'border-left' => '4px solid',
+                'box-shadow' => '0 5px 8px rgba(0, 0, 0, 0.08)',
+                'transition' => 'all linear 0.3s'
             ],
         ],
         'error' => [
             'style' => [
-                'color' => '#fff',
-                'background' => '#d63939',
+                'background-color'=> '#fff',
+                'border-color'=> '#ff623d',
+                'color'=>'#ff623d'
             ],
         ],
         'success' => [
             'style' => [
-                'color' => '#fff',
-                'background' => '#2fb344',
+                'background-color'=> '#fff',
+                'border-color'=> '#47d864',
+                'color'=>'#47d864'
             ],
         ],
         'info' => [
             'style' => [
-                'color' => '#fff',
-                'background' => '#4299e1',
+                'background-color'=> '#fff',
+                'border-color'=> '#2f86eb',
+                'color'=>'#2f86eb'
             ],
         ],
         'warning' => [
             'style' => [
-                'color' => '#fff',
-                'background' => '#f76707',
+                'background-color'=> '#fff',
+                'border-color'=> '#ffc021',
+                'color'=>'#ffc021'
             ],
         ],
     ],

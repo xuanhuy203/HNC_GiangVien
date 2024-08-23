@@ -33,15 +33,15 @@
 
 .p-1 {
     width: 25%;
-    padding: 6px 5px;
+    padding: 10px 5px;
 }
 .p-2 {
     width: 50%;
-    padding: 6px 5px;
+    padding: 10px 5px;
 }
 .p-4 {
     width: 100%;
-    padding: 6px 5px;
+    padding: 10px 5px;
 }
 
 .info-common, .info-professional-level, .info-health-condition {
@@ -78,11 +78,13 @@
 input.form-input, input.input--not-edit {
     border:none;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid transparent;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #eeeeffb8;
     padding: 8px;
-    background-color: ghostwhite;
+    color: #000;
+    font-size: 14px;
+    /* background-color: ghostwhite; */
   }
   
 input.form-input:focus {
@@ -91,4 +93,5 @@ input.form-input:focus {
 
 input.disable {
     background-color: ghostwhite;
+    background-color: #182433;
 }

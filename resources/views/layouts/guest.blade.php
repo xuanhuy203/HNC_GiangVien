@@ -33,7 +33,7 @@
         <div class="logo-container">
             <img src="{{ asset('asset') }}/images/logoHNC.png" alt="Logo">
         </div>
-        <div class="portal-name">Cổng Thông Tin Giảng Viên</div>
+        <div class="portal-name">Cổng Thông Tin <br> Giảng Viên</div>
     </div>
 
     <div class="right-container">

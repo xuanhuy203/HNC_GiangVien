@@ -723,23 +723,24 @@ td {
 }
 /* Toast Message */
 
-.toastify {
+.toastify, .toastify-right, .toastify-top {
   position: fixed!important;
   top: 60px!important;
   right: 10px!important;
   z-index: 999999!important;
   display: flex!important;
   align-items: center!important;
-  background-color: #fff;
+  background: linear-gradient(to right, #fafafa, #ffffff)!important;
   border-radius: 2px!important;
   font-size: 14px;
+  font-weight: 500;
   padding: 5px 15px!important;
   min-width: 220px!important;
   max-width: 400px!important;
   border-left: 4px solid!important;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3)!important;
   transition: all linear 0.3s!important;
-  animation: 0.3s ease 0s 1 normal none running slideInLeft, 1s linear 5s 1 normal forwards running fadeOut;
+  animation: 0.3s ease 0s 1 normal none running slideInLeft, 1s linear 5s 1 normal forwards running fadeOut !important;
 }
 
 @keyframes slideInLeft {

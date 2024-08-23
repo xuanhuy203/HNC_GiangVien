@@ -59,9 +59,10 @@ class ProfileController extends Controller
             $giangVien->HinhAnh = $imagePath;
             $giangVien->save(); // Lưu thông tin vào bảng hoso_giangvien
 
-            return redirect()->back()->with('success', 'Upload thành công.');
+            toastify()->success('Upload thành công');
+            return redirect()->back();
         }
 
-        return redirect()->back()->with('error', 'Upload thất bại.');
+        return redirect()->back()->with(toastify('error', 'Upload thất bại.'));
     }
 }

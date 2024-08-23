@@ -10,18 +10,18 @@
             </div>
         </div>
         <div class="row flex" style="padding-top: 15px">
-            <div class="col l-3">
+            <div class="col l-3" style="background-color:#eeeeffb8">
                 <div class="avatar" style="display: flex; justify-content: center; align-item: center; padding-top: 16px">
                     <!-- Hiển thị ảnh hiện tại -->
-                    <img src="{{ asset('storage/' . ($giangVien->HinhAnh ?? 'default-profile.png')) }}" alt="Profile Picture" id="imagePreview"
-                        style="width: 296px; border-radius: 50%; height: 296px; border: 2px solid #ccc">
+                    <img src="{{ asset('storage/' . ($giangVien->HinhAnh ?? 'avatar-account-icon-default')) }}" alt="Profile Picture" id="imagePreview"
+                        style="width: 240px; border-radius: 50%; height: 240px; border: 2px solid #ccc">
                 </div>
 
                 {{-- {{ dd($giangVien) }} --}}
                 <div class="vcard-name" style="display:flex; justify-content: center; padding: 16px 0">
                    <div style="text-align: center">
-                    <span style="font-size: 24px; line-height: 1.25; color: #1f2328; font-weight: 500">{{ $giangVien->HoDem . ' ' .$giangVien->Ten }}</span><br>
-                    <span style="font-size: 20px; line-height: 24px; color: #636c76; font-weight: 300">{{ $giangVien->MaGV}}</span><br>
+                    <span style="font-size: 20px; line-height: 1.25; color: #1f2328; font-weight: 500">{{ $giangVien->HoDem . ' ' .$giangVien->Ten }}</span><br>
+                    <span style="font-size: 20px; line-height: 22px; color: #636c76; font-weight: 300">{{ $giangVien->MaGV}}</span><br>
                     <span style="font-size: 20px; line-height: 1.25; color: #1f2328; font-weight: 500; text-transform: capitalize">{{ $nganh->TenNganh }}</span><br>
                    </div>
                 </div>
@@ -29,11 +29,11 @@
                 <!-- Form để upload ảnh mới -->
                 <form action="{{ route('profile.uploadAvatar') }}" method="POST" enctype="multipart/form-data" class="flex justify-center">
                     @csrf
-                    <button class="btn btn--primary">Chỉnh sửa thông tin</button>
+                    <button class="btn btn--primary" type="button" id= "btnEdit">Chỉnh sửa thông tin</button>
                     <input class="form-input" class="btn" type="file" name="file" accept="image/*" id="uploadInput" 
-                        style="display: none;" onchange="this.form.submit();">
-                    <button style="display: none" type="button" onclick="document.getElementById('uploadInput').click();" 
-                        class="btn btn--primary">Thay đổi ảnh đại diện</button>
+                        style="display: none;">
+                    <button style="display: none" type="button" 
+                        class="btn btn--primary" id="btnUploadAvatar">Thay đổi ảnh đại diện</button>
                 </form>
                 {{-- Thành tựu đạt được --}}
                 <div class="achievements" style="border-top: 1px solid #ccc; margin-top: 16px; padding-top: 16px">
@@ -60,7 +60,7 @@
                             {{-- Mã GV --}}
                             <div class="per_form-group p-1">
                                 <label class="form-group__lable" for="MaGV"><span class="text-red-600">*</span>Mã Giảng Viên:</label>
-                                <input class="input--not-edit" type="text" id="HoDem" name="MaGV" value="{{ $giangVien->MaGV }}" disabled>
+                                <input class="form-input input--not-edit" type="text" id="maGV" name="MaGV" value="{{ $giangVien->MaGV }}" disabled>
                             </div>
 
                             {{-- Họ Đệm --}}
@@ -262,14 +262,13 @@
                             </div>
                         </div>
                         <div class="per_form-group p-4 content-end" style="padding: 20px 20px 40px 20px">
-                            <button style="display: flex" type="button" 
-                                    onclick="document.getElementById('uploadInput').click();" 
-                                    class="btn btn--primary">Lưu thay đổi
-                            </button>
+                            <button class="btn btn--primary" style="display: none" type="submit" id="btnSave">Lưu thay đổi</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('asset/js/profile.js') }}"></script>
 @endsection
