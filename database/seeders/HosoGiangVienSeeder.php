@@ -24,7 +24,7 @@ class HosoGiangVienSeeder extends Seeder
                 'password' => Hash::make('2109610335'),
                 'NgaySinh' => '2003-11-11',
                 'GioiTinh' => 'Nam',
-                'DanToc_ID' => 26, // ID của dân tộc tương ứng
+                'DanToc_ID' => 01, // ID của dân tộc tương ứng
                 'NoiSinh' => 'Hải Dương',
                 'QueQuan' => 'Hải Dương',
                 'DiaChiThuongChu' => '123 Địa chỉ, Hải Dương',
@@ -35,7 +35,7 @@ class HosoGiangVienSeeder extends Seeder
                 'SDT' => '0987654321',
                 'Email' => 'huy@example.com',
                 'SoBHXH' => 'BHXH123456',
-                'KinhNghiemLV' => '5 years',
+                'KinhNghiemLV' => '3 năm',
                 'NgayTuyenDung' => '2024-01-01',
                 'TenNganHang' => 'Vietcombank',
                 'SoTaiKhoanNganHang' => '1234567890',

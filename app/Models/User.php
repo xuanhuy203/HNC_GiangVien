@@ -87,6 +87,11 @@ class User extends Authenticatable
         return $this->belongsTo(Nganh::class, 'Nganh_ID', 'id');
     }
 
+    public function dantoc()
+    {
+        return $this->belongsTo(DanToc::class, 'DanToc_ID', 'id');
+    }
+
     public function lop()
     {
         return $this->hasMany(Lop::class, 'MaGV', 'MaGV');

@@ -16,6 +16,7 @@ class DanToc extends Model
         'TenDanToc'
     ];
     
-    // // public function ()
-    // return $;
+    public function hoso_giangvien() {
+        return $this->hasOne(user::class,'id','DanToc_ID');
+    }
 }

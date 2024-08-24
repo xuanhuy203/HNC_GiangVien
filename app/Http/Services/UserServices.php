@@ -25,6 +25,9 @@ class UserServices
         ->where("MaGV", $maGV)->first();
         $nganhID = $giangVien->Nganh_ID;
 
+        if (!$giangVien) {
+            return [];
+        }
         
         // Lấy thông tin giảng viên từ db (xảy ra vđ bảo m)
         $giangVien = User::with('tb_nganh')
@@ -73,6 +76,7 @@ class UserServices
        if (!$maGV) {
            return [];
        }
+
        $giangVien = DB::table("hoso_giangvien")
        ->select('DanToc_ID')
        ->where("MaGV", $maGV)->first();
@@ -81,9 +85,24 @@ class UserServices
 
        $danToc = DB::table('tb_dantoc')
        ->select('tb_dantoc.*')
-       ->where('MaDanToc', $danTocID)
+       ->where('id', $danTocID)
        -> first();
 
         return $danToc;
+    }
+
+    public function getDanhsachNganh()
+    {
+        // Lấy danh sách ngành -> Column - key: 
+        $danhsachNganh = DB::table('tb_nganh')->pluck('TenNganh', 'id');
+
+        return $danhsachNganh;
+    }
+
+    public function getDanhsachDanToc()
+    {
+        // Lấy danh sách Dân Tộc -> Column - key: 
+        $danhsachDanToc = DB::table('tb_dantoc')->pluck('TenDanToc', 'id');
+        return $danhsachDanToc;
     }
 }

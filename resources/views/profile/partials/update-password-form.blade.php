@@ -36,7 +36,9 @@
                             class="form__input input-confirm-password" id="update_password_password_confirmation">
                     </div>
                     <div style="height: 10px; width: 100%; position: relative; text-align: left; margin-top: -15px">
-                        <x-input-error style="color: red; font-size: 13px; margin-top: 5px" :messages="$errors->updatePassword->get('current_password')" class="error-message" />
+                        <x-input-error style="color: red; font-size: 13px; margin: 2px 0px" :messages="$errors->updatePassword->get('current_password')" />
+                        <x-input-error style="color: red; font-size: 13px; margin: 2px 0px" :messages="$errors->updatePassword->get('password')"/>
+                        <x-input-error style="color: red; font-size: 13px; margin: 2px 0px" :messages="$errors->updatePassword->get('password_confirmation')"/>
                     </div>
                     <!-- Footer modal -->
                     <div class="btn-action">

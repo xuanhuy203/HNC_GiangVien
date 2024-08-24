@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Mã giảng viên hoặc mật khẩu không chính xác!',
-    'password' => 'Mật khẩu được cung cấp không chính xác.',
+    'failed' => 'Tên đăng nhập hoặc mật khẩu không chính xác!',
+    'password' => 'Mật khẩu không chính xác.',
     'throttle' => 'Bạn đã thử quá nhiều lần. Thử lại sau :seconds giây.',
 
 ];

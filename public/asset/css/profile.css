@@ -75,7 +75,7 @@
     color: #128080;
 }
 
-input.form-input, input.input--not-edit {
+.form-input, .select-edit, input.input--not-edit {
     border:none;
     outline: none;
     border: 1px solid transparent;
@@ -86,12 +86,12 @@ input.form-input, input.input--not-edit {
     font-size: 14px;
     /* background-color: ghostwhite; */
   }
-  
-input.form-input:focus {
+
+.form-input:focus, .select-edit:focus {
     outline: 2px solid var(--text-primary);
 }
 
-input.disable {
-    background-color: ghostwhite;
-    background-color: #182433;
+.select-edit {
+    display: none;
+    padding-left: 4px;
 }

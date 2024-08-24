@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const saveBtn = document.getElementById("btnSave");
     const uploadBtn = document.getElementById("btnUploadAvatar");
     const formInputs = document.querySelectorAll(".form-input");
+    const inputViews = document.querySelectorAll(".input-view");
+    const selectEdits = document.querySelectorAll(".select-edit");
 
 
     uploadInput.style.display = "none";
@@ -36,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 input.style.borderColor = "#ccc"; // hoặc áp dụng các thay đổi khác
             }
         );
+        inputViews.forEach(input => input.style.display = "none");
+        selectEdits.forEach(select => select.style.display = "flex");
     });
 
     // Khi click vào nút Save
@@ -46,5 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Disable lại tất cả các input
         formInputs.forEach(input => input.disabled = true);
+
+        inputViews.forEach(input => input.style.display = "flex");
+        selectEdits.forEach(select => select.style.display = "none");
     });
 });

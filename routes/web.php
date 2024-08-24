@@ -16,7 +16,8 @@ use App\Http\Controllers\Lecturer\StudentAttendanceController;
 Route::middleware(['auth', 'lecturer'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profilegiangvien');
-    Route::post('/profile', [ProfileController::class, 'index'])->name('profilegiangvien');
+    Route::get('/profile/update', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::put('/profile/update', [ProfileController::class, 'updateProfile'])->name('profilegiangvien.update');
     Route::post('/profile/upload-avatar', [ProfileController::class, 'uploadProfilePicture'])->name('profile.uploadAvatar');
     Route::get('/thay-doi-mat-khau', [ChangePasswordController::class, 'index'])->name('changepassword');
     Route::get('/diem-danh-sinh-vien', [StudentAttendanceController::class, 'index']);
