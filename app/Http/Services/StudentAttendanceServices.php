@@ -2,11 +2,10 @@
 
 namespace App\Http\Services;
 
-use App\Models\DanhSachDiemDanh;
-use App\Models\User;
 use App\Models\Lop;
 use App\Models\KyHoc;
 use App\Models\DanhSachMonHoc;
+use App\Models\DanhSachDiemDanh;
 use App\Models\GiangVienMonHoc;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -82,8 +81,6 @@ class StudentAttendanceServices
             )
             ->where('hoso_giangvien.MaGV', $maGV)
             ->distinct();
-
-        // dd($dataInfo);
 
         // điều khiện để lọc
         if (!empty($filters['hocky'])) {
