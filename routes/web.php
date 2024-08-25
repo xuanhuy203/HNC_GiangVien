@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Lecturer\ListOfFormsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\Lecturer\ComponentPointsController;
+use App\Http\Controllers\Lecturer\EnterComponentPointsController;
 use App\Http\Controllers\Lecturer\ListRollCallController;
 use App\Http\Controllers\Lecturer\StudentAttendanceController;
 
@@ -41,6 +43,16 @@ Route::middleware(['auth', 'lecturer'])->group(function () {
     // Điểm thành phần
     Route::get('/diem-thanh-phan', [ComponentPointsController::class, 'index']);
     Route::post('/diem-thanh-phan', [ComponentPointsController::class, 'filters']);
+
+    // Nhập điểm thành phần
+    Route::get('/nhap-diem-thanh-phan', [EnterComponentPointsController::class, 'index']);
+
+    // Danh sách biểu mẫu
+    Route::get('/danh-sach-bieu-mau', [ListOfFormsController::class, 'index']);
+
+    Route::post('/danh-sach-bieu-mau/{id}', [ListOfFormsController::class, 'upload'])->name('files.upload');
+
+    Route::get('/danh-sach-bieu-mau/{id}', [ListOfFormsController::class, 'download'])->name('files.download');
 });
 
 require __DIR__ . '/auth.php';
