@@ -13,7 +13,7 @@
                             <ul class="dropdown-menu" style="min-width: 200px;">
                                 <li class="dropdown__item"><a href="#" class="link link--black dropdown--link">Xem
                                         thời khoá biểu</a></li>
-                                <li class="dropdown__item"><a href="./lichcoithi.html"
+                                <li class="dropdown__item"><a href="/tra-cuu-lich-coi-thi"
                                         class="link link--black dropdown--link">Tra cứu lịch coi thi</a></li>
                                 <li class="dropdown__item"><a href="#" class="link link--black dropdown--link">Sổ
                                         nhật ký giảng dạy</a></li>

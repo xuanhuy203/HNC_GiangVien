@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col l-12 flex flex-col content-center" style="position: relative;">
                 <div class="content__title">
-                    <h3>Điểm danh sinh viên</h3>
+                    <h2>ĐIỂM DANH SINH VIÊN</h2>
                     <div class="content__desc">
                         @if ($danhSachDiemDanh)
                             <label>Tên môn: {{ $danhSachDiemDanh['diemDanh']->TenMon }}</label>
@@ -58,7 +58,15 @@
                                         <td>{{ $danhsach->HoDem }} {{ $danhsach->Ten }}</td>
                                         <td>{{ $danhsach->TenMon }}</td>
                                         <td>{{ $danhsach->TenLop }}</td>
-                                        <td>{{ $danhsach->NgayDiemDanh }}</td>
+                                        <td>
+                                            <input type="date" name="NgayDiemDanh[{{ $danhsach->id }}]"
+                                                {{-- $danhsach->NgayDiemDanh: Giá trị này có thể là null, một chuỗi, hoặc một đối tượng Carbon.  --}} {{-- (is_string($danhsach->NgayDiemDanh): có phải 1 chuỗi hay không --}} {{-- \Carbon\Carbon::parse($danhsach->NgayDiemDanh)->format('Y-m-d'):phương thức Carbon::parse() sẽ chuyển đổi chuỗi đó thành một đối tượng Carbon. --}}
+                                                value="{{ $danhsach->NgayDiemDanh ? (is_string($danhsach->NgayDiemDanh) ? \Carbon\Carbon::parse($danhsach->NgayDiemDanh)->format('Y-m-d') : $danhsach->NgayDiemDanh->format('Y-m-d')) : $currentDate->format('Y-m-d') }}"
+                                                style="padding: 10px;
+                                            border-radius: 4px;
+                                            outline: none;
+                                            border: 1px solid #ccc;">
+                                        </td>
                                         <td>{{ $danhsach->Ca }}</td>
                                         <td>{{ $danhsach->TietBD }} - {{ $danhsach->TietKT }}</td>
                                         <td>
@@ -66,48 +74,57 @@
                                                 <select name="SoTietDiMuon[{{ $danhsach->id }}]" id="search__select-option"
                                                     class="select-option search__select-option">
                                                     <option value="1">-- Chọn số tiết --</option>
-                                                    <option value="2"
-                                                        {{ $danhsach->SoTietDiMuon === 2 ? 'selected' : '' }}>
+                                                    <option value="Đi học đầy đủ"
+                                                        {{ $danhsach->SoTietDiMuon === 'Đi học đầy đủ' ? 'selected' : '' }}>
                                                         Đi học đầy đủ
-                                                        - 0
                                                     </option>
 
-                                                    <option value="3"
-                                                        {{ $danhsach->SoTietDiMuon === 3 ? 'selected' : '' }}>
+                                                    <option value="Vắng - 1 tiết"
+                                                        {{ $danhsach->SoTietDiMuon === 'Vắng - 1 tiết' ? 'selected' : '' }}>
                                                         Vắng - 1 tiết
                                                     </option>
 
-                                                    <option value="4"
-                                                        {{ $danhsach->SoTietDiMuon === 4 ? 'selected' : '' }}>
+                                                    <option value="Vắng - 2 tiết"
+                                                        {{ $danhsach->SoTietDiMuon === 'Vắng - 2 tiết' ? 'selected' : '' }}>
                                                         Vắng - 2 tiết
                                                     </option>
 
-                                                    <option value="5"
-                                                        {{ $danhsach->SoTietDiMuon === 5 ? 'selected' : '' }}>
+                                                    <option value="Vắng - 3 tiết"
+                                                        {{ $danhsach->SoTietDiMuon === 'Vắng - 3 tiết' ? 'selected' : '' }}>
                                                         Vắng - 3 tiết
                                                     </option>
 
-                                                    <option value="6"
-                                                        {{ $danhsach->SoTietDiMuon === 6 ? 'selected' : '' }}>
+                                                    <option value="Vắng - 4 tiết"
+                                                        {{ $danhsach->SoTietDiMuon === 'Vắng - 4 tiết' ? 'selected' : '' }}>
                                                         Vắng - 4 tiết
                                                     </option>
 
-                                                    <option value="7"
-                                                        {{ $danhsach->SoTietDiMuon === 7 ? 'selected' : '' }}>
+                                                    <option value="Vắng - 5 tiết"
+                                                        {{ $danhsach->SoTietDiMuon === 'Vắng - 5 tiết' ? 'selected' : '' }}>
                                                         Vắng - 5 tiết
                                                     </option>
 
-                                                    <option value="8"
-                                                        {{ $danhsach->SoTietDiMuon === 8 ? 'selected' : '' }}>
+                                                    <option value="Nghỉ có lí do"
+                                                        {{ $danhsach->SoTietDiMuon === 'Nghỉ có lí do' ? 'selected' : '' }}>
                                                         Nghỉ có lí do
                                                     </option>
 
-                                                    <option value="9"
-                                                        {{ $danhsach->SoTietDiMuon === 9 ? 'selected' : '' }}>
+                                                    <option
+                                                        value="Nghỉ không lí
+                                                        do"
+                                                        {{ $danhsach->SoTietDiMuon ===
+                                                        'Nghỉ không lí
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        do'
+                                                            ? 'selected'
+                                                            : '' }}>
                                                         Nghỉ không lí
                                                         do
                                                     </option>
                                                 </select>
+
+                                                <!-- Input ẩn để lưu giá trị text của option được chọn -->
+                                                <input type="hidden" name="SoTietDiMuonText[{{ $danhsach->id }}]"
+                                                    class="hidden-input">
                                             </div>
                                         </td>
                                         <td colspan="2">
@@ -133,6 +150,8 @@
         </div>
     </div>
 @endsection
+
+
 
 @push('flatpickr')
     <script>

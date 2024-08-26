@@ -41,11 +41,14 @@ Route::middleware(['auth', 'lecturer'])->group(function () {
     Route::get('/export-rollcall/{monHocKyId}', [StudentAttendanceController::class, 'export'])->name('export.rollcall');
 
     // Điểm thành phần
-    Route::get('/diem-thanh-phan', [ComponentPointsController::class, 'index']);
+    Route::get('/diem-thanh-phan', [ComponentPointsController::class, 'index'])->name('points.component');
     Route::post('/diem-thanh-phan', [ComponentPointsController::class, 'filters']);
+    // export
+    Route::get('/export-point/{monHocKyId}', [ComponentPointsController::class, 'export'])->name('export.point');
 
     // Nhập điểm thành phần
     Route::get('/nhap-diem-thanh-phan/{id}', [EnterComponentPointsController::class, 'index']);
+    Route::post('/luu-diem', [EnterComponentPointsController::class, 'update'])->name('save.update');
 
     // Danh sách biểu mẫu
     Route::get('/danh-sach-bieu-mau', [ListOfFormsController::class, 'index']);
@@ -53,6 +56,9 @@ Route::middleware(['auth', 'lecturer'])->group(function () {
     Route::post('/danh-sach-bieu-mau/{id}', [ListOfFormsController::class, 'upload'])->name('files.upload');
 
     Route::get('/danh-sach-bieu-mau/{id}', [ListOfFormsController::class, 'download'])->name('files.download');
+
+    // lịch coi thi
+    Route::get('/tra-cuu-lich-coi-thi', [ExamScheduleController::class, 'index']);
 });
 
 require __DIR__ . '/auth.php';

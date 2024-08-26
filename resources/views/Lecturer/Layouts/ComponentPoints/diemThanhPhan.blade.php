@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col l-12 flex flex-col content-center">
                 <div class="content__title">
-                    <h3>Điểm thành phần</h3>
+                    <h2>ĐIỂM THÀNH PHẦN</h2>
                 </div>
 
                 <form action="{{ url('/diem-thanh-phan') }}" method="POST">
@@ -82,7 +82,8 @@
                                             điểm</a>
                                     </td>
                                     <td><button class="btn btn--info table__btn">Import Điểm</button></td>
-                                    <td><button class="btn btn--success table__btn">Export Điểm</button></td>
+                                    <td><a href="{{ route('export.point', ['monHocKyId' => $item->id]) }}"
+                                            class="btn btn--success table__btn">Export Điểm</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
