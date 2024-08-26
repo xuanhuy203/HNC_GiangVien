@@ -13,7 +13,7 @@
             <div class="col l-3" style="background-color:#eeeeffb8">
                 <div class="avatar" style="display: flex; justify-content: center; align-item: center; padding-top: 16px">
                     <!-- Hiển thị ảnh hiện tại -->
-                    <img src="{{ asset('storage/' . ($giangVien->HinhAnh ?? 'avatar-account-icon-default')) }}" alt="Profile Picture" id="imagePreview"
+                    <img src="{{ asset('storage/' . ($giangVien->HinhAnh ?? asset('df-avt.jpg'))) }}" alt="Profile Picture" id="imagePreview"
                         style="width: 240px; border-radius: 50%; height: 240px; border: 2px solid #ccc">
                 </div>
 
