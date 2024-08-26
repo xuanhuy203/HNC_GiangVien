@@ -34,7 +34,9 @@ return [
     'can' => 'Trường :attribute chứa một giá trị không được phép.',
     'confirmed' => 'Giá trị xác nhận trong trường :attribute không khớp.',
     'current_password' => 'Mật khẩu hiện tại không chính xác.',
+    'cccd_num' => 'CCCD không hợp lệ',
     'date' => 'Trường :attribute phải là một ngày hợp lệ.',
+    'date_cccd' => 'Ngày cấp phải là một ngày hợp lệ.',
     'date_equals' => 'Trường :attribute phải là một ngày bằng với :date.',
     'date_format' => 'Trường :attribute không khớp với định dạng :format.',
     'decimal' => 'Trường :attribute phải có :decimal chữ số thập phân.',
@@ -141,6 +143,7 @@ return [
     'required_without' => 'Trường :attribute là bắt buộc khi :values không có mặt.',
     'required_without_all' => 'Trường :attribute là bắt buộc khi không có :values nào có mặt.',
     'same' => 'Trường :attribute và :other phải giống nhau.',
+    'SDT' => 'Số điện thoại phải có độ dài từ 10 đến 11 ký tự.',
     'size' => [
         'array' => 'Trường :attribute phải chứa :size mục.',
         'file' => 'Dung lượng tập tin trong trường :attribute phải bằng :size kilobytes.',

@@ -95,3 +95,7 @@
     display: none;
     padding-left: 4px;
 }
+
+.form-input[readonly] {
+    pointer-events: none; /* Ngăn click */
+}

@@ -20,23 +20,13 @@ class UserServices
         if (!$maGV) {
             return [];
         }
-        $giangVien = DB::table("hoso_giangvien")
-        ->select('Nganh_ID')
-        ->where("MaGV", $maGV)->first();
-        $nganhID = $giangVien->Nganh_ID;
 
-        if (!$giangVien) {
-            return [];
-        }
-        
-        // Lấy thông tin giảng viên từ db (xảy ra vđ bảo m)
-        $giangVien = User::with('tb_nganh')
-            ->where('Nganh_ID', $nganhID)
+        // Lấy thông tin giảng viên từ db
+        $giangVien = User::where('MaGV', $maGV)
             ->first()
             ->makeHidden(['password','remember_token']);
 
-            // dd($giangVien);
-
+        // dd($giangVien);
         // dd($nganh);
 
         return $giangVien;

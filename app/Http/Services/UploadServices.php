@@ -15,7 +15,7 @@ class UploadServices
                 $originalName = $request->file('file')->getClientOriginalName();
         
                 // Tạo đường dẫn thư mục theo ngày hiện tại
-                $pathFull = 'uploads/' . date("dd-mm-YY");
+                $pathFull = 'uploads/' . date("d-m-Y");
         
                 // Lưu file vào thư mục 'public' và sử dụng tên gốc của file
                 $request->file('file')->storeAs(

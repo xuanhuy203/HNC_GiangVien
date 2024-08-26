@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Nganh;
+use App\Helper\ApiHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\UserServices;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Services\UploadServices;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProfileController extends Controller
@@ -22,7 +24,7 @@ class ProfileController extends Controller
         $this->userServices = $userServices;
         $this->uploadServices = $uploadServices;
     }
-
+    
     // Hàm để lấy thông tin giảng viên và trả về view
     public function index()
     {
@@ -32,7 +34,7 @@ class ProfileController extends Controller
         $danToc = $this->userServices->getDanToc();
         $danhsachNganh = $this->userServices->getdanhsachNganh();
         $danhsachDanToc = $this->userServices->getdanhsachDanToc();
-        
+    
         // dd($giangVien);
         return view('profile.thongtinGiangvien', [
             'title' => 'Thông tin giảng viên',
@@ -40,7 +42,8 @@ class ProfileController extends Controller
             'nganh' => $nganh,
             'dantoc' => $danToc,
             'danhsachNganh' => $danhsachNganh,
-            'danhsachDanToc' => $danhsachDanToc
+            'danhsachDanToc' => $danhsachDanToc,
+
         ]);
     }
 
@@ -76,20 +79,18 @@ class ProfileController extends Controller
     public function updateProfile(Request $request) 
     {
         // Xác thực dữ liệu
-        // $request->validate([
-        //     'HoDem' => 'required|string|max:255',
-        //     'Ten' => 'required|string|max:255',
-        //     'TenKhac' => 'required|string|max:255',
-        //     'GioiTinh' => 'required|string|max:10',
-        //     'DanToc_ID' => 'required|exists:danhsachdantoc,id', // kiểm tra tồn tại trong bảng dân tộc
-        //     'NgaySinh' => 'required|date',
-        //     'CCCD' => 'required|string|max:20',
-        //     'NoiCapCCCD' => 'required|string|max:255',
-        //     'NgayCapCCCD' => 'required|date',
-        //     'SoDienThoai' => 'required|string|max:20',
-        //     'Email' => 'required|email|max:255',
-        //     'DiaChi' => 'required|string|max:255',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'NgaySinh' => 'date', 
+            'CCCD' => 'digits:12|string',
+            'Email' => 'email|max:255',
+            'SDT' => 'regex:/^\d{10,11}$/',
+        ]);
+
+         // Kiểm tra xem dữ liệu có hợp lệ không
+        if ($validator->fails()) {
+            toastify()->error('Có lỗi xảy ra xin vui lòng kiểm tra lại!');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         // Lấy giảng viên hiện tại
         $user = Auth::user();
@@ -102,23 +103,31 @@ class ProfileController extends Controller
             'HoDem' => $request->input('HoDem', $info->HoDem),
             'Ten' => $request->input('Ten', $info->Ten),
             'TenKhac' => $request->input('TenKhac', $info->TenKhac),
-            'DanToc_ID' => $request->input('DanToc_ID', $info->DanToc_ID), // Cập nhật ID của dân tộc
+            'DanToc_ID' => $request->input('DanToc_ID', $info->DanToc_ID),
             'GioiTinh' => $request->input('GioiTinh', $info->GioiTinh),
             'NgaySinh' => $request->input('NgaySinh', $info->NgaySinh),
             'CCCD' => $request->input('CCCD', $info->CCCD),
-            'Email' => $request->input('Email', $info->Email),
-            'SDT' => $request->input('SDT', $info->SDT),
-            'DiaChiThuongChu' => $request->input('DiaChiThuongChu', $info->DiaChiThuongChu),
-            'ChoOHienNay' => $request->input('ChoOHienNay', $info->ChoOHienNay),
-            'NoiSinh' => $request->input('NoiSinh', $info->NoiSinh),
-            'QueQuan' => $request->input('QueQuan', $info->QueQuan),
             'NoiCapCCCD' => $request->input('NoiCapCCCD', $info->NoiCapCCCD),
             'NgayCapCCCD' => $request->input('NgayCapCCCD', $info->NgayCapCCCD),
+            'SDT' => $request->input('SDT', $info->SDT),
+            'Email' => $request->input('Email', $info->Email),
+            'NoiSinh' => $request->input('NoiSinh', $info->NoiSinh),
+            'QueQuan' => $request->input('QueQuan', $info->QueQuan),
+            'DiaChiThuongChu' => $request->input('DiaChiThuongChu', $info->DiaChiThuongChu),
+            'ChoOHienNay' => $request->input('ChoOHienNay', $info->ChoOHienNay),
             'SoBHXH' => $request->input('SoBHXH', $info->SoBHXH),
-            'KinhNghiemLV' => $request->input('KinhNghiemLV', $info->KinhNghiemLV),
             'NgayTuyenDung' => $request->input('NgayTuyenDung', $info->NgayTuyenDung),
             'TenNganHang' => $request->input('TenNganHang', $info->TenNganHang),
             'SoTaiKhoanNganHang' => $request->input('SoTaiKhoanNganHang', $info->SoTaiKhoanNganHang),
+            'TrinhDo' => $request->input('TrinhDo', $info->TrinhDo),
+            'TrinhDoGiaoDucPhoThong' => $request->input('TrinhDoGiaoDucPhoThong', $info->TrinhDoGiaoDucPhoThong),
+            'TrinhDoNgoaiNgu' => $request->input('TrinhDoNgoaiNgu', $info->TrinhDoNgoaiNgu),
+            'ChungChiKyNangNghe' => $request->input('ChungChiKyNangNghe', $info->ChungChiKyNangNghe),
+            'ChuyenNganhHoc' => $request->input('ChuyenNganhHoc', $info->ChuyenNganhHoc),
+            'CoSoDaoTao' => $request->input('CoSoDaoTao', $info->CoSoDaoTao),
+            'Nganh_ID' => $request->input('Nganh_ID', $info->Nganh_ID),
+            'ChungChiNghiepVuSuPham' => $request->input('ChungChiNghiepVuSuPham', $info->ChungChiNghiepVuSuPham),
+            'KinhNghiemLamViec' => $request->input('KinhNghiemLamViec', $info->KinhNghiemLamViec),
         ]);
 
         // Hiển thị dữ liệu
@@ -128,5 +137,4 @@ class ProfileController extends Controller
         toastify()->success('Cập nhật thành công');
         return redirect()->route('profilegiangvien');
     }
-
 }
