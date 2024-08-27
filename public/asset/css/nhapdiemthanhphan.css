@@ -1,0 +1,48 @@
+body {
+    font-size: 14px;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+h3.title {
+    line-height: 1;
+    color: red;
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: -10px;
+}
+
+.table {
+    font-size: 14px!important;
+    box-shadow: var(--shadow);
+}
+
+.table_th {
+    background-color: #128080;
+    color: #fff;
+}
+.table_th tr {
+    color: inherit;
+}
+.table_th td {
+    font-weight: 500;
+    color: inherit;
+}
+
+tbody td {
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #DDEFFE; /* Ví dụ màu nền */
+}
+
+tbody tr:hover {
+    background-color: #F5F5F5;
+}
+
+.table__btn {
+    padding: 10px 20px;
+}
