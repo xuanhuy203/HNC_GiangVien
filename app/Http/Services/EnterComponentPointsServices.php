@@ -15,7 +15,6 @@ class EnterComponentPointsServices
         $user = Auth::user();
         $maGV = $user->MaGV;
 
-        // Tiêu đề Tên môn và tên lớp không viết theo Eloquent Query Builder.
         // Truy vấn để lấy bản ghi duy nhất phù hợp với điều kiện
         $diemThanhPhan = DB::table('danhsach_diemthanhphan')
             ->join('danhsach_monhoc', 'danhsach_monhoc.MaMonHoc', '=', 'danhsach_diemthanhphan.MaMonHoc')

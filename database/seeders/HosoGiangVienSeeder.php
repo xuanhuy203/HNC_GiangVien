@@ -29,7 +29,7 @@ class HosoGiangVienSeeder extends Seeder
                 'QueQuan' => 'Hải Dương',
                 'DiaChiThuongChu' => '123 Địa chỉ, Hải Dương',
                 'ChoOHienNay' => '123 Địa chỉ hiện tại, Hải Dương',
-                'CCCD' => '0123456789',
+                'CCCD' => '012345678901',
                 'NoiCapCCCD' => 'Hải Dương',
                 'NgayCapCCCD' => '2020-01-01',
                 'SDT' => '0987654321',

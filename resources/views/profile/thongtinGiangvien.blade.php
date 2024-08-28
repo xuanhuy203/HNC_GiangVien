@@ -28,9 +28,9 @@
                 {{-- {{ dd($giangVien) }} --}}
                 <div class="vcard-name" style="display:flex; justify-content: center; padding: 16px 0">
                    <div style="text-align: center">
-                    <span style="font-size: 20px; line-height: 1.25; color: #1f2328; font-weight: 500">{{ $giangVien->HoDem . ' ' .$giangVien->Ten }}</span><br>
-                    <span style="font-size: 20px; line-height: 22px; color: #636c76; font-weight: 300">{{ $giangVien->MaGV}}</span><br>
-                    <span style="font-size: 20px; line-height: 1.25; color: #1f2328; font-weight: 500; text-transform: capitalize">{{ $nganh->TenNganh }}</span><br>
+                    <div style="font-size: 20px; line-height: 1.25; color: #1f2328; font-weight: 500">{{ $giangVien->HoDem . ' ' .$giangVien->Ten }}</div>
+                    <div style="font-size: 20px; line-height: 22px; color: #636c76; font-weight: 300; margin: 10px 0;">{{ $giangVien->MaGV}}</div>
+                    <div style="font-size: 20px; line-height: 1.25; color: #1f2328; font-weight: 500; text-transform: capitalize">{{ $nganh->TenNganh }}</div>
                    </div>
                 </div>
 

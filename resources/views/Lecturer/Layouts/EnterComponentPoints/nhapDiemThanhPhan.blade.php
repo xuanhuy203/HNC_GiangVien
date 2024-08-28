@@ -1,4 +1,5 @@
 @extends('Lecturer.DefaultLayout.main')
+<link rel="stylesheet" href="{{ asset('asset/css/nhapdiemthanhphan.css') }}">
 
 @section('content')
     <div class="grid">
@@ -46,7 +47,8 @@
                                         <td>{{ $item->HoDem }} {{ $item->Ten }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->NgayThangNamSinh)->format('d/m/Y') }}</td>
                                         <td>
-                                            {{-- Đoạn mã này tạo ra một input ẩn chứa mã số sinh viên (MaSV) và gửi nó cùng với các dữ liệu khác khi form được submit. Điều này giúp biết được dữ liệu điểm số nào thuộc về sinh viên nào mà không cần phải hiển thị MaSV ra giao diện người dùng. --}}
+                                            {{-- Đoạn mã này tạo ra một input ẩn chứa mã số sinh viên (MaSV) và gửi nó cùng với các dữ liệu khác khi form được submit. 
+                                            Điều này giúp biết được dữ liệu điểm số nào thuộc về sinh viên nào mà không cần phải hiển thị MaSV ra giao diện người dùng. --}}
                                             <input type="hidden" name="diem[{{ $index }}][MaSV]"
                                                 value="{{ $item->MaSV }}">
 
@@ -111,18 +113,21 @@
 @endsection
 <script>
     function calculateDiemTB(index) {
-        // lấy các giá trị điểm thành phần từ input
-        // parseFloat() là một hàm trong JavaScript được sử dụng để phân tích một chuỗi và trả về một số thập phân
-        let DiemTX1 = parseFloat(document.getElementById('DiemTX1_' + index).value) || 0;
-        let DiemDK1 = parseFloat(document.getElementById('DiemDK1_' + index).value) || 0;
-        let DiemTX2 = parseFloat(document.getElementById('DiemTX2_' + index).value) || 0;
-        let DiemDK2 = parseFloat(document.getElementById('DiemDK2_' + index).value) || 0;
-        let DiemThi = parseFloat(document.getElementById('DiemThi_' + index).value) || 0;
+    // Lấy giá trị từ các ô nhập điểm
+    let DiemTX1 = parseFloat(document.getElementById('DiemTX1_' + index).value) || null;
+    let DiemDK1 = parseFloat(document.getElementById('DiemDK1_' + index).value) || null;
+    let DiemTX2 = parseFloat(document.getElementById('DiemTX2_' + index).value) || null;
+    let DiemDK2 = parseFloat(document.getElementById('DiemDK2_' + index).value) || null;
+    let DiemThi = parseFloat(document.getElementById('DiemThi_' + index).value) || null;
 
-        // cong thuc tinh diem TB
+    // Kiểm tra xem tất cả các giá trị đều không phải null
+    if (DiemTX1 !== null && DiemDK1 !== null && DiemTX2 !== null && DiemDK2 !== null && DiemThi !== null) {
+        // Tính điểm trung bình nếu tất cả các điểm đều đã được nhập
         let DiemTB = (((DiemTX1 + DiemTX2 + (DiemDK1 * 2) + (DiemDK2 * 2)) / 6) * 0.4) + (DiemThi * 0.6);
-
-        // hiển thị điểm trung bình trong input DiemTB
         document.getElementById('DiemTB_' + index).value = DiemTB.toFixed(2);
+    } else {
+        // Nếu có một hoặc nhiều ô điểm chưa được nhập, xóa giá trị điểm trung bình
+        document.getElementById('DiemTB_' + index).value = '';
     }
+}
 </script>
