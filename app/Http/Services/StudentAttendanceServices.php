@@ -2,13 +2,10 @@
 
 namespace App\Http\Services;
 
-use App\Models\Lop;
-use App\Models\KyHoc;
-use App\Models\DanhSachMonHoc;
 use App\Models\DanhSachDiemDanh;
-use App\Models\GiangVienMonHoc;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\GiangVienMonHoc;
 
 class StudentAttendanceServices
 {

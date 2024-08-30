@@ -19,7 +19,7 @@
                     </svg>
                 </div>
                 <x-text-input id="MaGV" class="login__input" type="text" name="MaGV" :value="old('MaGV')"
-                required autofocus placeholder="Tên đăng nhập" autocomplete="username" />
+                    required autofocus placeholder="Tên đăng nhập" autocomplete="username" />
             </div>
 
             <!-- Password -->
@@ -37,7 +37,8 @@
             </div>
             <div style="height: 10px; width: 100%; position: relative">
                 <x-input-error style="font-size: 12px; color: red" :messages="$errors->get('MaGV')" class="error-message" />
-                <x-input-error style="font-size: 12px; color: red position: relative;" :messages="$errors->get('password')" class="error-message" />        
+                <x-input-error style="font-size: 12px; color: red position: relative;" :messages="$errors->get('password')"
+                    class="error-message" />
             </div>
             <x-primary-button class="btn btn--primary login__button">
                 {{ __('Đăng nhập') }}

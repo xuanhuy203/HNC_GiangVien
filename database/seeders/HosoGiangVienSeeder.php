@@ -39,7 +39,7 @@ class HosoGiangVienSeeder extends Seeder
                 'NgayTuyenDung' => '2024-01-01',
                 'TenNganHang' => 'Vietcombank',
                 'SoTaiKhoanNganHang' => '1234567890',
-                'TrinhDoGiaoDucPhoThong' => 'Đại học',
+                'TrinhDoGiaoDucPhoThong' => '12/12',
                 'TrinhDo' => 'Thạc sĩ',
                 'TrinhDoNgoaiNgu' => 'IELTS 7.5',
                 'ChungChiKyNangNghe' => 'Chứng chỉ ABC',
