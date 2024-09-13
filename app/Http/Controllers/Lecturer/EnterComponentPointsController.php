@@ -49,14 +49,6 @@ class EnterComponentPointsController extends Controller
         try {
             // lặp qua các phần tử điểm để cập nhập vào cơ sở dữ liệu
             foreach ($diemData as $data) {
-                // kiểm tra sự tồn tại của các trường trước khi cập nhập
-                if (!isset($data['DiemTX1']) || !isset($data['DiemDK1']) || !isset($data['DiemTX2']) || !isset($data['DiemDK2']) || !isset($data['DiemThi']) || !isset($data['DiemTB']) || !isset($data['GhiChu'])) {
-                    toastify()->warning('Thiếu dữ liệu cho sinh viên!');
-
-                    // bỏ qua các bản ghi thiếu và tiếp tục các bản ghi khác
-                    continue;
-                }
-
                 // tìm bản ghi điểm của sinh viên theo mã sinh viên, mã môn học
                 $diemThanhPhan = DanhSachDiemThanhPhan::where('MaSV', $data['MaSV'])
                     ->where('MaMonHoc', $data['MaMonHoc'])
@@ -69,11 +61,9 @@ class EnterComponentPointsController extends Controller
                     $diemThanhPhan->DiemTX2 = $data['DiemTX2'];
                     $diemThanhPhan->DiemDK2 = $data['DiemDK2'];
                     $diemThanhPhan->DiemThi = $data['DiemThi'];
-                    $diemThanhPhan->DiemTB = $data['DiemTB'];
                     $diemThanhPhan->GhiChu = $data['GhiChu'];
 
                     // lưu các thay đổi vào db
-
                     $diemThanhPhan->save();
 
                 } else {

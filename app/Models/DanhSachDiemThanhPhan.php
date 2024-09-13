@@ -20,7 +20,8 @@ class DanhSachDiemThanhPhan extends Model
         'DiemTX2',
         'DiemDK2',
         'DiemTB',
-        'khoa'
+        'khoa',
+        'GhiChu'
     ];
 
     public function sinhvien()

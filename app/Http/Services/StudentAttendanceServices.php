@@ -2,10 +2,11 @@
 
 namespace App\Http\Services;
 
-use App\Models\DanhSachDiemDanh;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use App\Models\GiangVienMonHoc;
+use App\Models\DanhSachDiemDanh;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class StudentAttendanceServices
 {
@@ -19,16 +20,13 @@ class StudentAttendanceServices
             return [];
         }
 
+        // dd($user, $maGV);
         // Lấy thông tin giảng viên, bao gồm MaLop và TenLop
         $giangVien = DB::table('hoso_giangvien')
             ->join('lop', 'hoso_giangvien.MaGV', '=', 'lop.MaGV')
             ->where('hoso_giangvien.MaGV', $maGV)
             ->select('lop.MaLop', 'lop.TenLop', 'lop.Nganh_ID')
             ->get();
-
-        if ($giangVien->isEmpty()) {
-            return [];
-        }
 
         // Lấy danh sách MaLop từ giảng viên
         $maLops = $giangVien->pluck('MaLop');
@@ -43,14 +41,12 @@ class StudentAttendanceServices
             })
             ->select('kyhoc.id', 'kyhoc.TenKy', DB::raw('YEAR(kyhoc.ThoiGianBD) as NamBD'), DB::raw('YEAR(kyhoc.ThoiGianKT) as NamKT'))
             ->get();
-
         // Lấy danh sách môn học dựa theo Nganh_ID
         $monHocs = DB::table('danhsach_monhoc')
             ->where('danhsach_monhoc.Nganh_ID', $nganhID)
             ->select('danhsach_monhoc.MaMonHoc', 'danhsach_monhoc.TenMon', 'danhsach_monhoc.SoTiet', 'danhsach_monhoc.SoTin')
             ->get();
 
-        // dd($monHocs);
 
         // Lấy các môn học mà giảng viên dạy
         $monHocKy = DB::table('giangvien_monhoc')

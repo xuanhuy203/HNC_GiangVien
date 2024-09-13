@@ -61,35 +61,35 @@
                                         </td>
 
                                         <td>
-                                            <input class="input" type="number" step="0.01" placeholder="Nhập DiemDK1"
+                                            <input class="input" type="number" step="0.01" placeholder="Nhập Điểm"
                                                 name="diem[{{ $index }}][DiemDK1]" value="{{ $item->DiemDK1 }}"
                                                 onchange="calculateDiemTB({{ $index }})"
                                                 id="DiemDK1_{{ $index }}" required>
                                         </td>
 
                                         <td>
-                                            <input class="input" type="number" step="0.01" placeholder="Nhập DiemTX2"
+                                            <input class="input" type="number" step="0.01" placeholder="Nhập Điểm"
                                                 name="diem[{{ $index }}][DiemTX2]" value="{{ $item->DiemTX2 }}"
                                                 onchange="calculateDiemTB({{ $index }})"
                                                 id="DiemTX2_{{ $index }}" required>
                                         </td>
 
                                         <td>
-                                            <input class="input" type="number" step="0.01" placeholder="Nhập DiemDK2"
+                                            <input class="input" type="number" step="0.01" placeholder="Nhập Điểm"
                                                 name="diem[{{ $index }}][DiemDK2]" value="{{ $item->DiemDK2 }}"
                                                 onchange="calculateDiemTB({{ $index }})"
                                                 id="DiemDK2_{{ $index }}" required>
                                         </td>
 
                                         <td>
-                                            <input class="input" type="number" step="0.01" placeholder="Nhập DiemThi"
+                                            <input class="input" type="number" step="0.01" placeholder="Nhập Điểm"
                                                 name="diem[{{ $index }}][DiemThi]" value="{{ $item->DiemThi }}"
                                                 onchange="calculateDiemTB({{ $index }})"
                                                 id="DiemThi_{{ $index }}" required>
                                         </td>
 
                                         <td>
-                                            <input class="input" type="number" step="0.01" placeholder="Nhập DiemTB"
+                                            <input class="input" type="number" step="0.01"
                                                 name="diem[{{ $index }}][DiemTB]" value="{{ $item->DiemTB }}"
                                                 readonly id="DiemTB_{{ $index }}">
                                         </td>

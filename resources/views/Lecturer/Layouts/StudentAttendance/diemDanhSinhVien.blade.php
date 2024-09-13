@@ -13,12 +13,14 @@
                         <div class="search-option">
                             <label class="option-name search__option-name" for="hocky">Học kỳ:</label>
                             <select name="hocky" id="hocky" class="select-option search__select-option">
-                                <option value="">-- Chọn học kỳ --</option>
-                                @foreach ($getDataInfo['kyHocs'] as $kyHoc)
-                                    <option
-                                        value="{{ $kyHoc->id }}"{{ request('hocky') === $kyHoc->TenKy ? 'selected' : '' }}>
-                                        {{ $kyHoc->TenKy }}</option>
-                                @endforeach
+                                <option value="">-- Chọn kỳ học --</option>
+                                {{-- @if(is_array($getDataInfo['kyHocs']) || is_object($getDataInfo['kyHocs'])) --}}
+                                    @foreach ($getDataInfo['kyHocs'] as $kyHoc)
+                                        <option value="{{ $kyHoc->id }}"{{ request('hocky') === $kyHoc->TenKy ? 'selected' : '' }}>
+                                            {{ $kyHoc->TenKy }}
+                                        </option>
+                                    @endforeach
+                                {{-- @endif --}}
                             </select>
                         </div>
 
@@ -26,12 +28,14 @@
                             <label class="option-name search__option-name" for="monhoc">Môn học:</label>
                             <select name="monhoc" id="monhoc" class="select-option search__select-option">
                                 <option value="">-- Chọn môn học --</option>
-                                @foreach ($getDataInfo['monHocs'] as $monHoc)
-                                    <option value="{{ $monHoc->MaMonHoc }}"
-                                        {{ request('monhoc') === $monHoc->MaMonHoc ? 'selected' : '' }}>
-                                        {{ $monHoc->TenMon }}
-                                    </option>
-                                @endforeach
+                                @if(is_array($getDataInfo['monHocs']) || is_object($getDataInfo['monHocs']))
+                                    @foreach ($getDataInfo['monHocs'] as $monHoc)
+                                        <option value="{{ $monHoc->MaMonHoc }}"
+                                            {{ request('monhoc') === $monHoc->MaMonHoc ? 'selected' : '' }}>
+                                            {{ $monHoc->TenMon }}
+                                        </option>
+                                    @endforeach 
+                                @endif
                             </select>
                         </div>
 
@@ -39,10 +43,13 @@
                             <label class="option-name search__option-name" for="lop">Lớp học phần:</label>
                             <select name="lop" id="lop" class="select-option search__select-option">
                                 <option value="">-- Chọn lớp học phần --</option>
-                                @foreach ($getDataInfo['giangVien'] as $lop)
-                                    <option value="{{ $lop->MaLop }}"
-                                        {{ request('lop') == $lop->MaLop ? 'selected' : '' }}>{{ $lop->TenLop }}</option>
-                                @endforeach
+                                @if(is_array($getDataInfo['giangVien']) || is_object($getDataInfo['giangVien']))
+                                    @foreach ($getDataInfo['giangVien'] as $lop)
+                                        <option value="{{ $lop->MaLop }}"
+                                            {{ request('lop') == $lop->MaLop ? 'selected' : '' }}>{{ $lop->TenLop }}
+                                        </option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
 
@@ -67,31 +74,33 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @foreach ($getDataInfo['dataInfo'] as $index => $item)
-                                <tr class="tr__title">
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $item->TenMon }}</td>
-                                    <td>{{ $item->TenLop }}</td>
-                                    <td>{{ $item->HoDem }} {{ $item->Ten }}</td>
-                                    <td>{{ $item->SoTiet }}</td>
-                                    <td>50</td>
-                                    <td>{{ $item->SoTin }}</td>
-                                    <td><a href="/danh-sach-diem-danh/{{ $item->id }}"
-                                            class="btn btn--secondary table__btn ">ĐDSV</a></td>
-                                    <td>
-                                        <div class="custom-file-upload">
-                                            <button type="submit" class="btn btn--info table__btn">Import ĐD</button>
-                                        </div>
+                            @if(is_array($getDataInfo['monHocs']) || is_object($getDataInfo['monHocs']))
+                                @foreach ($getDataInfo['dataInfo'] as $index => $item)
+                                    <tr class="tr__title">
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $item->TenMon }}</td>
+                                        <td>{{ $item->TenLop }}</td>
+                                        <td>{{ $item->HoDem }} {{ $item->Ten }}</td>
+                                        <td>{{ $item->SoTiet }}</td>
+                                        <td>50</td>
+                                        <td>{{ $item->SoTin }}</td>
+                                        <td><a href="/danh-sach-diem-danh/{{ $item->id }}"
+                                                class="btn btn--secondary table__btn ">ĐDSV</a></td>
+                                        <td>
+                                            <div class="custom-file-upload">
+                                                <button type="submit" class="btn btn--info table__btn">Import ĐD</button>
+                                            </div>
 
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        <a href="{{ route('export.rollcall', ['monHocKyId' => $item->id]) }}"
-                                            class="btn btn--success table__btn">Export ĐD
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        <td>
+                                            <a href="{{ route('export.rollcall', ['monHocKyId' => $item->id]) }}"
+                                                class="btn btn--success table__btn">Export ĐD
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach        
+                            @endif
                         </tbody>
                     </table>
                 </div>
