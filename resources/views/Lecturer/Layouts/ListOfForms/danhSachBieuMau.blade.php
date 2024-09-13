@@ -40,7 +40,7 @@
                                         <form action="{{ route('files.download', ['id' => $item->id]) }}" method="GET">
                                             @csrf
 
-                                            <button class="btn btn--primary form-table__btn">Download</button>
+                                            <button class="btn btn--primary form-table__btn">Tải xuống </button>
                                         </form>
                                     </td>
                                 </tr>

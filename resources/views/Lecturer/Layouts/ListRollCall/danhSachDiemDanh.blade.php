@@ -54,7 +54,7 @@
                             <tbody>
                                 @foreach ($danhSachDiemDanh['danhSachDiemDanh'] as $index => $danhsach)
                                     <tr class="tr__title">
-                                        <td>{{ $index }}</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>{{ $danhsach->MaSV }}</td>
                                         <td>{{ $danhsach->HoDem }} {{ $danhsach->Ten }}</td>
                                         <td>{{ $danhsach->TenMon }}</td>

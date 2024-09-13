@@ -85,10 +85,10 @@
                                         <td>50</td>
                                         <td>{{ $item->SoTin }}</td>
                                         <td><a href="/danh-sach-diem-danh/{{ $item->id }}"
-                                                class="btn btn--secondary table__btn ">ĐDSV</a></td>
+                                                class="btn btn--info table__btn ">ĐDSV</a></td>
                                         <td>
                                             <div class="custom-file-upload">
-                                                <button type="submit" class="btn btn--info table__btn">Import ĐD</button>
+                                                <button type="submit" class="btn btn--secondary table__btn">Import ĐD</button>
                                             </div>
 
                                         </td>

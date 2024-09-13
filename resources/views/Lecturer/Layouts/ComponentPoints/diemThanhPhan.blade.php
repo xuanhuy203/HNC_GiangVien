@@ -77,20 +77,20 @@
                                     <td>{{ $item->SoTin }}</td>
                                     <td>{{ $item->SoTiet }}</td>
                                     <td>40</td>
-                                    <td style="width: 10%">
+                                    <td style="width: 8%">
                                         <a href="/xem-diem-thanh-phan/{{ $item->id }}"
-                                            class="btn btn--secondary table__btn">Xem điểm
+                                            class="btn btn--info table__btn">Xem điểm
                                         </a>
                                     </td>
 
-                                    <td style="width: 12%;">
+                                    <td style="width: 8%;">
                                         <a href="/nhap-diem-thanh-phan/{{ $item->id }}"
-                                            class="btn btn--info table__btn">Cập nhập điểm
+                                            class="btn btn--secondary table__btn">Cập nhập
                                         </a>
                                     </td>
-                                    <td style="width: 6%">
+                                    <td style="width: 8%">
                                         <a href="{{ route('export.point', ['monHocKyId' => $item->id]) }}"
-                                            class="btn btn--success table__btn">Export
+                                            class="btn btn--success table__btn">Xuất điểm
                                         </a>
                                     </td>
                                 </tr>

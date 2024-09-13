@@ -61,6 +61,7 @@ class EnterComponentPointsController extends Controller
                     $diemThanhPhan->DiemTX2 = $data['DiemTX2'];
                     $diemThanhPhan->DiemDK2 = $data['DiemDK2'];
                     $diemThanhPhan->DiemThi = $data['DiemThi'];
+                    $diemThanhPhan->DiemTB = $data['DiemTB'];
                     $diemThanhPhan->GhiChu = $data['GhiChu'];
 
                     // lưu các thay đổi vào db

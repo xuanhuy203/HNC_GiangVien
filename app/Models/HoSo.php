@@ -10,6 +10,7 @@ class HoSo extends Model
     use HasFactory;
 
     protected $table = 'tb_HoSo';
+    public $timestamps = false; // Tắt tự động thêm timestamps
 
     protected $fillable = [
         'HoDem',

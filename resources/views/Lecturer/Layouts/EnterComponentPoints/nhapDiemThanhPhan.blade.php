@@ -103,7 +103,7 @@
                             </tbody>
                         </table>
                         <div class="flex justify-end content-center" style="margin-top:20px;">
-                            <button class="btn btn--primary table__btn">Lưu</button>
+                            <button class="btn btn--primary btn--search">Lưu thay đổi</button>
                         </div>
                     </form>
                 </div>
